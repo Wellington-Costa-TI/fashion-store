@@ -20,12 +20,12 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister.setOnClickListener{
             when{
                 TextUtils.isEmpty(findViewById<EditText>(R.id.et_register_email_address).text.toString().trim{ it <=' '}) -> {
-                Toast.makeText(
+                  Toast.makeText(
                     this@RegisterActivity,
-                    "Por favor, insira o email",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+                      "Por favor, insira o email",
+                      Toast.LENGTH_SHORT
+                    ).show()
+                }
                  TextUtils.isEmpty(findViewById<EditText>(R.id.et_register_password).text.toString().trim{ it <=' '}) -> {
                 android.widget.Toast.makeText(
                     this@RegisterActivity,
@@ -51,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
                                     Intent(this@RegisterActivity, MainActivity::class.java)
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra("user_id", firebaseUser.uid)
+                                intent.putExtra("user_name", firebaseUser.displayName)
                                 intent.putExtra("user_email", email)
                                 startActivity(intent)
                                 finish()
@@ -62,13 +62,9 @@ class RegisterActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
-
                         }
                 }
-
             }
-
-
         }
     }
 }
