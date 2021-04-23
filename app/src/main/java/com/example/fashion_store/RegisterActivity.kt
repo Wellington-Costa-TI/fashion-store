@@ -7,8 +7,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fashion_store.entity.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +38,10 @@ class RegisterActivity : AppCompatActivity() {
                 else ->{
                     val email : String = findViewById<EditText>(R.id.et_register_email_address).text.toString().trim{ it <=' '}
                     val senha : String = findViewById<EditText>(R.id.et_register_password).text.toString().trim{ it <=' '}
+                    val nome : String = findViewById<EditText>(R.id.et_register_name).text.toString().trim{ it <=' '}
+                    val celular : String = findViewById<EditText>(R.id.et_register_phone).text.toString().trim{ it <=' '}
+                    val dataNascimento : String = findViewById<EditText>(R.id.et_register_date).text.toString().trim{ it <=' '}
+                    val usuario = User(nome,celular,email,dataNascimento)
 
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
                         .addOnCompleteListener { task ->
@@ -46,12 +52,17 @@ class RegisterActivity : AppCompatActivity() {
                                     "Cadastrado com sucesso!",
                                     Toast.LENGTH_SHORT
                                 ).show()
-
+                                    val bancoDeDados = FirebaseDatabase.getInstance()
+                                    val mBanco = bancoDeDados.getReference("user")
+                                    val keyid : String? = mBanco.push().key
+                                    if (keyid != null) {
+                                        mBanco.child(keyid).setValue(usuario)
+                                    }
                                 val intent =
                                     Intent(this@RegisterActivity, MainActivity::class.java)
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra("user_name", firebaseUser.displayName)
+                                intent.putExtra("user_name", nome)
                                 intent.putExtra("user_email", email)
                                 startActivity(intent)
                                 finish()
