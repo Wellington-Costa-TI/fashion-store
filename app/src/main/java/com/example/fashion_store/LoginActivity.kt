@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
                                 val firebaseUser: FirebaseUser = task.result!!.user!!
                                 android.widget.Toast.makeText(
                                     this@LoginActivity,
-                                    "login realizado com sucesso!",
+                                    "Login realizado com sucesso!",
                                     Toast.LENGTH_SHORT
                                 ).show()
 
