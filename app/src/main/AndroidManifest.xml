@@ -10,11 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FashionStore">
         <activity android:name=".RegisterProductActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".LoginActivity">
 
@@ -23,7 +19,13 @@
         <activity
             android:name=".MainActivity"
             android:label="FASHION STORE"
-            android:theme="@style/Theme.FashionStore.NoActionBar"></activity>
+            android:theme="@style/Theme.FashionStore.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

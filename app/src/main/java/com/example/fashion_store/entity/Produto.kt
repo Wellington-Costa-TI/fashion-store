@@ -8,4 +8,7 @@ data class Produto(
     val valor : Double,
     val estoque : Int,
     val imagePath : String
-)
+
+){
+    constructor(): this("","",0.00,0,"")
+}
