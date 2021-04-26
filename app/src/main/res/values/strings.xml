@@ -8,6 +8,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_pessoais">Dados pessoais</string>
+    <string name="menu_enderecos">Meus endereços</string>
+    <string name="menu_carrinho">Meu carrinho</string>
+    <string name="menu_pedidos">Meus pedidos</string>
 </resources>
