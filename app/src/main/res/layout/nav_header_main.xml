@@ -15,7 +15,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_user_picture"
         android:layout_width="113dp"
         android:layout_height="99dp"
         android:contentDescription="@string/nav_header_desc"
@@ -43,5 +43,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.979" />
+
+    <Button
+        android:id="@+id/btn_login_or_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="35dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

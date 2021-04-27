@@ -18,6 +18,8 @@
             android:background="@color/rose"
             app:popupTheme="@style/Theme.FashionStore.PopupOverlay" />
 
+
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />

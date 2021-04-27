@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fashion_store.R
 import com.example.fashion_store.entity.Produto
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -43,7 +44,6 @@ class HomeFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val adapter = GroupAdapter<GroupieViewHolder>()
                 val rv_product_itens =  root.findViewById<RecyclerView>(R.id.rv_product_itens)
-
                 snapshot.children.forEach{
                     val product = it.getValue(Produto::class.java)
                    if (product!= null)

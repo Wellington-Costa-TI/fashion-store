@@ -8,8 +8,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.fashion_store.entity.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
         val tvCadastreSe = findViewById<TextView>(R.id.tv_register)
         tvCadastreSe.setOnClickListener{
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+            finish()
         }
 
         val btnLogin = findViewById<Button>(R.id.btn_login)
@@ -51,12 +54,20 @@ class LoginActivity : AppCompatActivity() {
                                     "Login realizado com sucesso!",
                                     Toast.LENGTH_SHORT
                                 ).show()
-
                                 val intent =
                                     Intent(this@LoginActivity, MainActivity::class.java)
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra("user_name", firebaseUser.displayName)
+
+                                val bancoDeDados = FirebaseDatabase.getInstance()
+                                val mBanco = bancoDeDados.getReference("user").child(firebaseUser.uid).get()
+                                mBanco.addOnSuccessListener {
+                                    val user = it.getValue(User::class.java )
+                                    if (user != null)
+                                    intent.putExtra("user_name", user.nomeCompleto)
+                                }
+
+
                                 intent.putExtra("user_email", email)
                                 startActivity(intent)
                                 finish()

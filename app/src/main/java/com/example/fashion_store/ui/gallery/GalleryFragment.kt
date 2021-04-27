@@ -24,7 +24,7 @@ class GalleryFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_pessoais, container, false)
         val textView: TextView = root.findViewById(R.id.text_pessoais)
         galleryViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+
         })
         return root
     }

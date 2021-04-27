@@ -1,7 +1,9 @@
 package com.example.fashion_store
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -15,23 +17,34 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.example.fashion_store.entity.Produto
+import com.example.fashion_store.entity.User
+import com.example.fashion_store.ui.home.HomeFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var mFirebaseAuth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        val userName = intent.getStringExtra("user_name")
-        val userEmail = intent.getStringExtra("user_email")
+
+        mFirebaseAuth = FirebaseAuth.getInstance()
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "email: $userEmail", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "email: Sei mais não", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -51,6 +64,49 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onStart() {
+        super.onStart()
+        val userName = intent.getStringExtra("user_name")
+        val userEmail = intent.getStringExtra("user_email")
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        val nav_header = navigationView.getHeaderView(0)
+        val username = nav_header.findViewById<TextView>(R.id.tv_user_name)
+        val btnLoginOrLogout = nav_header.findViewById<Button>(R.id.btn_login_or_logout)
+
+        val mFirebaseUser : FirebaseUser? = mFirebaseAuth.currentUser
+
+
+
+        if (mFirebaseUser == null){
+
+            username.text = "Bem-vindo, Visitante"
+            btnLoginOrLogout.text = "Login"
+            btnLoginOrLogout.setOnClickListener {
+                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                finish()
+            }
+        }else{
+            username.text = userName
+            btnLoginOrLogout.text = "Logout"
+            btnLoginOrLogout.setOnClickListener {
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                finish()
+            }
+        }
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_logout){
+            FirebaseAuth.getInstance().signOut()
+            val intent =
+                Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()

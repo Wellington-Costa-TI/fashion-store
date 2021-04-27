@@ -5,5 +5,7 @@ data class User(
     val celular: String,
     val email: String,
     val dataNascimento: String
-)
+){
+    constructor() : this("","","","")
+}
 

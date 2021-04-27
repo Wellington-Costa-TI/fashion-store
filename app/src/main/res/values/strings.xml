@@ -12,4 +12,9 @@
     <string name="menu_enderecos">Meus endereços</string>
     <string name="menu_carrinho">Meu carrinho</string>
     <string name="menu_pedidos">Meus pedidos</string>
+
+    <string name="phone_mask">(##) #####-####</string>
+    <string name="date_mask">##/##/####</string>
+    <string name="price_mask">R$ ####,##</string>
+
 </resources>
