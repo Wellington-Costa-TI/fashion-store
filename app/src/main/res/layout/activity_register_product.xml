@@ -29,7 +29,7 @@
         android:layout_height="104dp"
         android:ems="10"
         android:hint="Descrição do produto"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -67,8 +67,8 @@
 
     <Button
         android:id="@+id/btn_register_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="158dp"
+        android:layout_height="52dp"
         android:text="Cadastrar"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"

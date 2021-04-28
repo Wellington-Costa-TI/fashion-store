@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         if (mFirebaseUser == null){
 
-            username.text = "Bem-vindo, Visitante"
+            username.text = "Entre"
 
         }else{
             val mDatabase = FirebaseDatabase.getInstance().reference
