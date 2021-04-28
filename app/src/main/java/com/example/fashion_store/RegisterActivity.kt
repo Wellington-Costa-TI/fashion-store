@@ -60,10 +60,8 @@ class RegisterActivity : AppCompatActivity() {
                                 ).show()
                                     val bancoDeDados = FirebaseDatabase.getInstance()
                                     val mBanco = bancoDeDados.getReference("user")
-                                    val keyid : String? = mBanco.push().key
-                                    if (keyid != null) {
-                                        mBanco.child(keyid).setValue(usuario)
-                                    }
+                                        mBanco.child(firebaseUser.uid).setValue(usuario)
+
                                 val intent =
                                     Intent(this@RegisterActivity, MainActivity::class.java)
                                 intent.flags =

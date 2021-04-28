@@ -2,6 +2,7 @@ package com.example.fashion_store
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -81,7 +82,18 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }else{
-            username.text = userName
+            val mDatabase = FirebaseDatabase.getInstance().reference
+            val userId = FirebaseAuth.getInstance().currentUser.uid
+            mDatabase.child("user").child(userId).get().addOnSuccessListener {
+                val user = it.getValue(User :: class.java )
+                if (user != null) {
+                    username.text = user.nomeCompleto.toString()
+                }
+            }.addOnFailureListener{
+                Log.e("firebase", "Error getting data", it)
+            }
+
+
             btnLoginOrLogout.text = "Logout"
             btnLoginOrLogout.setOnClickListener {
                 FirebaseAuth.getInstance().signOut()

@@ -8,10 +8,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.example.fashion_store.entity.Produto
 import com.example.fashion_store.entity.User
+import com.example.fashion_store.ui.home.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,14 +66,6 @@ class LoginActivity : AppCompatActivity() {
                                     Intent(this@LoginActivity, MainActivity::class.java)
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
-                                val bancoDeDados = FirebaseDatabase.getInstance()
-                                val mBanco = bancoDeDados.getReference("user").child(firebaseUser.uid).get()
-                                mBanco.addOnSuccessListener {
-                                    val user = it.getValue(User::class.java )
-                                    if (user != null)
-                                    intent.putExtra("user_name", user.nomeCompleto)
-                                }
 
 
                                 intent.putExtra("user_email", email)
