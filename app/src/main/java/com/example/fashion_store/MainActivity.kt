@@ -76,11 +76,7 @@ class MainActivity : AppCompatActivity() {
         if (mFirebaseUser == null){
 
             username.text = "Bem-vindo, Visitante"
-            btnLoginOrLogout.text = "Login"
-            btnLoginOrLogout.setOnClickListener {
-                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                finish()
-            }
+
         }else{
             val mDatabase = FirebaseDatabase.getInstance().reference
             val userId = FirebaseAuth.getInstance().currentUser.uid
@@ -92,14 +88,7 @@ class MainActivity : AppCompatActivity() {
             }.addOnFailureListener{
                 Log.e("firebase", "Error getting data", it)
             }
-
-
-            btnLoginOrLogout.text = "Logout"
-            btnLoginOrLogout.setOnClickListener {
-                FirebaseAuth.getInstance().signOut()
-                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                finish()
-            }
+            
         }
 
     }
