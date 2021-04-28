@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val nav_header = navigationView.getHeaderView(0)
         val username = nav_header.findViewById<TextView>(R.id.tv_user_name)
-        val btnLoginOrLogout = nav_header.findViewById<Button>(R.id.btn_login_or_logout)
+        //val btnLoginOrLogout = nav_header.findViewById<Button>(R.id.btn_login_or_logout)
 
         val mFirebaseUser : FirebaseUser? = mFirebaseAuth.currentUser
 
