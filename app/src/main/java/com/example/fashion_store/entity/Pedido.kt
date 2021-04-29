@@ -3,7 +3,7 @@ package com.example.fashion_store.entity
 data class Pedido(
     val codigo: String,
     val produtos : List<Produto>,
-    val comprador : User,
+    val comprador : User
 ){
     fun getValor(): Double {
         var valor : Double = 0.00

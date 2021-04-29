@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+    <TextView
+        android:id="@+id/tv_endereco_destinatario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destinatario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
+
+    <TextView
+        android:id="@+id/tv_endereco_endereco"
+        android:layout_width="211dp"
+        android:layout_height="18dp"
+        android:text="Endereço"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="46dp" />
+
+    <TextView
+        android:id="@+id/tv_endereco_numero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="número"
+
+        tools:layout_editor_absoluteX="234dp"
+        tools:layout_editor_absoluteY="45dp" />
+
+    <TextView
+        android:id="@+id/tv_endereco_cidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cidade"
+
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <TextView
+        android:id="@+id/tv_endereco_cep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CEP"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="95dp" />
+
+    <TextView
+        android:id="@+id/tv_endereco_complemento"
+        android:layout_width="190dp"
+        android:layout_height="22dp"
+        android:text="Complemento"
+
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="128dp" />
+
+    <TextView
+        android:id="@+id/tv_endereco_estado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <TextView
+        android:id="@+id/tv_endereco_ponto_de_referencia"
+        android:layout_width="266dp"
+        android:layout_height="20dp"
+        android:text="Ponto de referência"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="164dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

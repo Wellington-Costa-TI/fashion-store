@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         mFirebaseAuth = FirebaseAuth.getInstance()
+        
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -67,6 +68,8 @@ class MainActivity : AppCompatActivity() {
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val nav_header = navigationView.getHeaderView(0)
         val username = nav_header.findViewById<TextView>(R.id.tv_user_name)
+        val cadastrese = nav_header.findViewById<TextView>(R.id.tv_user_name3)
+        val ou = nav_header.findViewById<TextView>(R.id.tv_user_name2)
         //val btnLoginOrLogout = nav_header.findViewById<Button>(R.id.btn_login_or_logout)
 
         val mFirebaseUser : FirebaseUser? = mFirebaseAuth.currentUser
@@ -74,8 +77,19 @@ class MainActivity : AppCompatActivity() {
 
 
         if (mFirebaseUser == null){
-
             username.text = "Entre"
+            username.setOnClickListener{
+                val intent =
+                        Intent(this@MainActivity, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            cadastrese.setOnClickListener{
+                val intent =
+                        Intent(this@MainActivity, RegisterActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
 
         }else{
             val mDatabase = FirebaseDatabase.getInstance().reference
@@ -88,7 +102,9 @@ class MainActivity : AppCompatActivity() {
             }.addOnFailureListener{
                 Log.e("firebase", "Error getting data", it)
             }
-            
+
+            cadastrese.visibility = TextView.INVISIBLE
+            ou.visibility = TextView.INVISIBLE
         }
 
     }

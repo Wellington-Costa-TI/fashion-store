@@ -7,7 +7,7 @@
     tools:context=".RegisterAddressActivity">
 
     <EditText
-        android:id="@+id/et_register_name5"
+        android:id="@+id/et_register_address_address"
         android:layout_width="300dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.448" />
 
     <Button
-        android:id="@+id/btn_register_product2"
+        android:id="@+id/btn_register_address"
         android:layout_width="158dp"
         android:layout_height="52dp"
         android:text="Salvar"
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.917" />
 
     <EditText
-        android:id="@+id/et_register_name4"
+        android:id="@+id/et_register_address_cep"
         android:layout_width="300dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.362" />
 
     <EditText
-        android:id="@+id/et_register_name3"
+        android:id="@+id/et_register_address_recipient"
         android:layout_width="300dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.28" />
 
     <EditText
-        android:id="@+id/et_register_name7"
+        android:id="@+id/et_register_address_complement"
         android:layout_width="191dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.542" />
 
     <EditText
-        android:id="@+id/et_register_name8"
+        android:id="@+id/et_register_address_city"
         android:layout_width="165dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -90,7 +90,7 @@
         app:layout_constraintVertical_bias="0.628" />
 
     <EditText
-        android:id="@+id/et_register_name9"
+        android:id="@+id/et_register_address_state"
         android:layout_width="126dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -104,7 +104,7 @@
         app:layout_constraintVertical_bias="0.628" />
 
     <EditText
-        android:id="@+id/et_register_name6"
+        android:id="@+id/et_register_address_number"
         android:layout_width="100dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -131,7 +131,7 @@
         app:layout_constraintVertical_bias="0.785" />
 
     <EditText
-        android:id="@+id/et_register_name10"
+        android:id="@+id/et_register_address_reference_point"
         android:layout_width="300dp"
         android:layout_height="42dp"
         android:ems="10"
