@@ -1,5 +1,6 @@
 package com.example.fashion_store.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fashion_store.R
 import com.example.fashion_store.entity.Produto
-import com.google.firebase.auth.FirebaseAuth
+import com.example.fashion_store.ui.productdetail.ProductAdapter
+import com.example.fashion_store.ui.productdetail.ProductDetailActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -42,14 +44,15 @@ class HomeFragment : Fragment() {
         val ref = FirebaseDatabase.getInstance().getReference("/product")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val adapter = GroupAdapter<GroupieViewHolder>()
+                var listaDeProduto : MutableList<Produto> = mutableListOf()
                 val rv_product_itens =  root.findViewById<RecyclerView>(R.id.rv_product_itens)
                 snapshot.children.forEach{
                     val product = it.getValue(Produto::class.java)
                    if (product!= null)
-                    adapter.add(ProductItem(product))
+                    listaDeProduto.add(product)
                 }
-                rv_product_itens.adapter = adapter
+
+                rv_product_itens.adapter = ProductAdapter(listaDeProduto)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -59,20 +62,5 @@ class HomeFragment : Fragment() {
         })
     }
 
-    class ProductItem(val product: Produto) : Item<GroupieViewHolder>(){
-        override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-            val imagepath = viewHolder.itemView.findViewById<ImageView>(R.id.iv_product_item)
-          viewHolder.itemView.findViewById<TextView>(R.id.tv_product_item_name).text = product.nome
-            viewHolder.itemView.findViewById<TextView>(R.id.tv_value_item_product).text = "R$ " + product.valor.toString()
-
-            Picasso.get().load(product.imagePath).into(viewHolder.itemView.findViewById<ImageView>(R.id.iv_product_item))
-        }
-
-        override fun getLayout(): Int {
-            return  R.layout.item_product
-        }
-
-    }
-
-
 }
+

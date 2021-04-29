@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.fashion_store.entity.Endereco
-import com.example.fashion_store.ui.slideshow.SlideshowFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 

@@ -1,10 +1,10 @@
-package com.example.fashion_store.ui.slideshow
+package com.example.fashion_store.ui.address
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SlideshowViewModel : ViewModel() {
+class AddressViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = ""

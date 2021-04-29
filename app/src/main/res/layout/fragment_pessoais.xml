@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".ui.personaldata.PersonalDataFragment">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -18,8 +18,8 @@
         app:layout_constraintVertical_bias="0.154"
         app:srcCompat="@drawable/logomarca" />
 
-    <com.santalu.maskara.widget.MaskEditText
-        android:id="@+id/et_register_phone2"
+    <TextView
+        android:id="@+id/et_show_phone"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:ems="10"
@@ -30,11 +30,11 @@
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
-        app:mask="@string/phone_mask" />
+        app:layout_constraintVertical_bias="0.498"/>
+<!--        app:mask="@string/phone_mask" />-->
 
-    <EditText
-        android:id="@+id/et_register_name2"
+    <TextView
+        android:id="@+id/et_show_name"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:ems="10"
@@ -47,8 +47,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.332" />
 
-    <EditText
-        android:id="@+id/et_register_email_address2"
+    <TextView
+        android:id="@+id/tv_show_email_address"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:ems="10"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.574" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_register_password2"
         android:layout_width="300dp"
         android:layout_height="45dp"
@@ -75,8 +75,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.654" />
 
-    <com.santalu.maskara.widget.MaskEditText
-        android:id="@+id/et_register_date2"
+    <TextView
+        android:id="@+id/et_show_date"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:ems="10"
@@ -87,11 +87,11 @@
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.413"
-        app:mask="@string/date_mask" />
+        app:layout_constraintVertical_bias="0.413"/>
+<!--        app:mask="@string/date_mask" />-->
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_change_value"
         android:layout_width="158dp"
         android:layout_height="52dp"
         android:text="ALTERAR"

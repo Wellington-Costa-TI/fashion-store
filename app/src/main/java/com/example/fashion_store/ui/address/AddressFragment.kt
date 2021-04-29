@@ -1,36 +1,31 @@
-package com.example.fashion_store.ui.slideshow
+package com.example.fashion_store.ui.address
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fashion_store.R
 import com.example.fashion_store.RegisterAddressActivity
 import com.example.fashion_store.entity.Endereco
-import com.example.fashion_store.entity.Produto
-import com.example.fashion_store.ui.home.HomeFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
-class SlideshowFragment : Fragment() {
+class AddressFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var addressViewModel: AddressViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -39,8 +34,8 @@ class SlideshowFragment : Fragment() {
     ): View? {
 
 
-        slideshowViewModel =
-                ViewModelProvider(this).get(SlideshowViewModel::class.java)
+        addressViewModel =
+                ViewModelProvider(this).get(AddressViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_endereco, container, false)
         fetchAdresses(root)
 
@@ -56,6 +51,7 @@ class SlideshowFragment : Fragment() {
     }
 
     private fun fetchAdresses(root: View) {
+
         val userId = FirebaseAuth.getInstance().currentUser.uid
         val ref = FirebaseDatabase.getInstance().getReference("/address/$userId")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -64,8 +60,11 @@ class SlideshowFragment : Fragment() {
                 val rv_address_itens =  root.findViewById<RecyclerView>(R.id.rv_address_itens)
                 snapshot.children.forEach{
                     val address = it.getValue(Endereco::class.java)
-                    if (address!= null)
+
+                    if (address != null) {
+                        Log.d("endereco",address.endereco)
                         adapter.add(adressItem(address))
+                    }
                 }
                 rv_address_itens.adapter = adapter
             }

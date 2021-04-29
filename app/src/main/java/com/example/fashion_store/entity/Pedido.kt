@@ -1,15 +1,12 @@
 package com.example.fashion_store.entity
 
+import java.time.LocalDate
+
 data class Pedido(
-    val codigo: String,
-    val produtos : List<Produto>,
-    val comprador : User
+        val valorTotal: Double,
+        val dataFeitura: LocalDate?,
+        val dataFinalizacao: LocalDate?,
+        val finalizado: Boolean
 ){
-    fun getValor(): Double {
-        var valor : Double = 0.00
-        this.produtos.forEach {
-            valor += it.valor;
-        }
-        return valor
-    }
+    constructor() : this(0.00,null,null,false)
 }

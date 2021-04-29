@@ -1,27 +1,25 @@
-package com.example.fashion_store.ui.gallery
+package com.example.fashion_store.ui.cart
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.fashion_store.R
 
-class GalleryFragment : Fragment() {
+class CartFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var cartViewModel: CartViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-                ViewModelProvider(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_pessoais, container, false)
+        cartViewModel =
+                ViewModelProvider(this).get(CartViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_carrinho, container, false)
 
         return root
     }
