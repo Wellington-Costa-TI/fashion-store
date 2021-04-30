@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fashion_store.R
-import com.example.fashion_store.RegisterAddressActivity
-import com.example.fashion_store.RegisterProductActivity
+import com.example.fashion_store.*
 import com.example.fashion_store.entity.Produto
 import com.example.fashion_store.ui.productdetail.ProductAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -40,6 +38,7 @@ class HomeFragment : Fragment() {
                 Intent(activity, RegisterProductActivity::class.java)
             startActivity(intent)
         }
+
         return root
     }
 

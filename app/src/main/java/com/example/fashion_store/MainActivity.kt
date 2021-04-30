@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
             mDatabase.child("user").child(userId).get().addOnSuccessListener {
                 val user = it.getValue(User :: class.java )
                 if (user != null) {
-                    username.text = user.nomeCompleto.toString()
+                    username.text = user.nomeCompleto
                 }
             }.addOnFailureListener{
                 Log.e("firebase", "Error getting data", it)
@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
         if (item.itemId == R.id.action_logout){
             FirebaseAuth.getInstance().signOut()
             val intent =
-                Intent(this@MainActivity, LoginActivity::class.java)
+                Intent(this@MainActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
