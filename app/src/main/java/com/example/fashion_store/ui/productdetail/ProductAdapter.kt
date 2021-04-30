@@ -20,6 +20,7 @@ class ProductAdapter(private val productList: List<Produto>): RecyclerView.Adapt
         val productPrice = itemView.findViewById<TextView>(R.id.tv_value_item_product)
         val productImage = itemView.findViewById<ImageView>(R.id.iv_product_item)
         val productImagePath = itemView.findViewById<TextView>(R.id.tv_image_path_product_item)
+        val productId = itemView.findViewById<TextView>(R.id.tv_id_product_item)
 
        init {
            itemView.setOnClickListener(this)
@@ -30,6 +31,7 @@ class ProductAdapter(private val productList: List<Produto>): RecyclerView.Adapt
             intent.putExtra("product_description", v?.findViewById<TextView>(R.id.tv_product_item_description)?.text)
             intent.putExtra("product_price",v?.findViewById<TextView>(R.id.tv_value_item_product)?.text)
             intent.putExtra("product_image_path",v?.findViewById<TextView>(R.id.tv_image_path_product_item)?.text)
+            intent.putExtra("product_id",v?.findViewById<TextView>(R.id.tv_id_product_item)?.text)
             v?.context?.startActivity(intent)
         }
     }
@@ -46,6 +48,7 @@ class ProductAdapter(private val productList: List<Produto>): RecyclerView.Adapt
         holder.productDescription.text = currentProduct.descricao
         holder.productPrice.text = "R$ "+currentProduct.valor
         holder.productImagePath.text = currentProduct.imagePath
+        holder.productId.text = currentProduct.id
     }
 
     override fun getItemCount(): Int {

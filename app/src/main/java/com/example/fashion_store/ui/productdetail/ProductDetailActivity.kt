@@ -2,12 +2,21 @@ package com.example.fashion_store.ui.productdetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.fashion_store.R
+import com.example.fashion_store.entity.Pedido
 import com.example.fashion_store.entity.Produto
+import com.example.fashion_store.entity.User
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
+import java.time.Instant
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.util.*
 
 class ProductDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +27,7 @@ class ProductDetailActivity : AppCompatActivity() {
         val productDescription = intent.getStringExtra("product_description")
         val productPrice = intent.getStringExtra("product_price")
         val productImagePath = intent.getStringExtra("product_image_path")
+        val productId = intent.getStringExtra("product_id")
 
         val cancelButton = findViewById<Button>(R.id.btn_cancel_add_product_to_cart)
         val addToCartButton = findViewById<Button>(R.id.btn_add_product_to_cart)
@@ -32,11 +42,12 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
         addToCartButton.setOnClickListener{
-            addToCart()
+
+
+            addToCart(productId.toString())
         }
     }
 
-    private fun addToCart() {
-        TODO("Not yet implemented")
+    private fun addToCart(productId: String) {
     }
 }
