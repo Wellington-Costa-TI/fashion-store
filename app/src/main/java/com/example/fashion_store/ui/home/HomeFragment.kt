@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fashion_store.*
 import com.example.fashion_store.entity.Produto
@@ -54,8 +55,9 @@ class HomeFragment : Fragment() {
                    if (product!= null)
                     listaDeProduto.add(product)
                 }
-
+                rv_product_itens.layoutManager = GridLayoutManager(context, 2,GridLayoutManager.VERTICAL,false)
                 rv_product_itens.adapter = ProductAdapter(listaDeProduto)
+
             }
 
             override fun onCancelled(error: DatabaseError) {

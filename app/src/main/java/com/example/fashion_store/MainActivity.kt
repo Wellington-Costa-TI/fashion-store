@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
 
         if (mFirebaseUser == null){
             username.text = "Entre"
+
             username.setOnClickListener{
                 val intent =
                         Intent(this@MainActivity, LoginActivity::class.java)
