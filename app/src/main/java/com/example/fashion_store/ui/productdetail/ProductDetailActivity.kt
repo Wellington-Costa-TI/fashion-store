@@ -32,6 +32,11 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
         addToCartButton.setOnClickListener{
+            addToCart()
         }
+    }
+
+    private fun addToCart() {
+        TODO("Not yet implemented")
     }
 }

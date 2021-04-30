@@ -79,7 +79,7 @@ class RegisterProductActivity : AppCompatActivity() {
         val estoque: Int =
                 findViewById<EditText>(R.id.et_register_product_name_quantity).text.toString().toInt()
 
-        val produto =  Produto(nome, descricao, valor, estoque, "")
+        val produto =  Produto(nome, descricao, valor, estoque, "","")
         saveNewProduct(produto)
     }
 
@@ -99,12 +99,13 @@ class RegisterProductActivity : AppCompatActivity() {
 
     private fun persistNewProduct(imageRemotePath: String, novoProduto: Produto) {
 
-        val produto = Produto(novoProduto.nome,novoProduto.descricao, novoProduto.valor, novoProduto.estoque, imageRemotePath)
+
 
         val bancoDeDados = FirebaseDatabase.getInstance()
         val mBanco = bancoDeDados.getReference("product")
         val keyid : String? = mBanco.push().key
         if (keyid != null) {
+            val produto = Produto(novoProduto.nome,novoProduto.descricao, novoProduto.valor, novoProduto.estoque, imageRemotePath, keyid)
             mBanco.child(keyid).setValue(produto)
         }
     }

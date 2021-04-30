@@ -4,8 +4,9 @@ data class User(
     val nomeCompleto: String,
     val celular: String,
     val email: String,
-    val dataNascimento: String
+    val dataNascimento: String,
+    val admin : Boolean = false
 ){
-    constructor() : this("","","","")
+    constructor() : this("","","","", false)
 }
 
